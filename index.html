@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sash Nejad — Online Coaching Montreal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0a0a0a;
+    --gold: #c9a96e;
+    --gold-dark: #a8854a;
+    --white: #ffffff;
+    --off-white: #f7f5f2;
+    --muted: #888580;
+    --border: rgba(0,0,0,0.08);
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--white);
+    color: var(--black);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 18px;
+    color: var(--black);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+  }
+  .nav-cta {
+    background: var(--black);
+    color: var(--white);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 20px;
+    border-radius: 4px;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: #222; }
+
+  /* HERO */
+  .hero {
+    background: var(--black);
+    color: var(--white);
+    padding: 6rem 2rem 5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; left: 50%;
+    transform: translateX(-50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(201,169,110,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(201,169,110,0.3);
+    padding: 5px 16px;
+    border-radius: 20px;
+    margin-bottom: 2rem;
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 6vw, 64px);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--white);
+    max-width: 760px;
+    margin: 0 auto 1.5rem;
+    letter-spacing: -0.01em;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  .hero-sub {
+    font-size: 17px;
+    color: rgba(255,255,255,0.55);
+    max-width: 500px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+  .btn-primary {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--black);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 14px 32px;
+    border-radius: 4px;
+    transition: background 0.2s, transform 0.15s;
+    letter-spacing: 0.02em;
+  }
+  .btn-primary:hover { background: var(--gold-dark); transform: translateY(-1px); }
+  .btn-note {
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+    margin-top: 12px;
+  }
+  .proof-bar {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 4rem;
+    padding-top: 3rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .proof-item { text-align: center; }
+  .proof-num {
+    font-family: var(--font-display);
+    font-size: 28px;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .proof-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+    margin-top: 5px;
+    letter-spacing: 0.04em;
+  }
+
+  /* SECTIONS */
+  section { padding: 5rem 2rem; }
+  .container { max-width: 960px; margin: 0 auto; }
+  .section-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(26px, 4vw, 38px);
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 3rem;
+    max-width: 540px;
+  }
+
+  /* WHO */
+  .who { background: var(--off-white); }
+  .who-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+  }
+  .who-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .who-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+  .who-card span { font-size: 14px; color: var(--black); }
+
+  /* WHAT YOU GET */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--border);
+  }
+  .feature {
+    background: var(--white);
+    padding: 2rem;
+  }
+  .feature-num {
+    font-family: var(--font-display);
+    font-size: 32px;
+    color: var(--gold);
+    opacity: 0.4;
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+  .feature-title {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    color: var(--black);
+  }
+  .feature-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* HOW IT WORKS */
+  .how { background: var(--off-white); }
+  .steps { display: flex; flex-direction: column; gap: 0; max-width: 640px; }
+  .step {
+    display: flex;
+    gap: 2rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .step:last-child { border-bottom: none; }
+  .step-num {
+    font-family: var(--font-display);
+    font-size: 48px;
+    color: var(--gold);
+    opacity: 0.25;
+    line-height: 1;
+    flex-shrink: 0;
+    width: 52px;
+    text-align: right;
+  }
+  .step-content {}
+  .step-title {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    color: var(--black);
+  }
+  .step-desc { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+  /* PRICING */
+  .pricing-card {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    max-width: 560px;
+  }
+  .pricing-header {
+    background: var(--black);
+    padding: 2rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .pricing-name {
+    font-family: var(--font-display);
+    font-size: 22px;
+    color: var(--white);
+    font-weight: 400;
+  }
+  .pricing-sub { font-size: 13px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+  .pricing-amount {
+    font-family: var(--font-display);
+    font-size: 40px;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .pricing-period { font-size: 13px; color: rgba(255,255,255,0.4); text-align: right; margin-top: 2px; }
+  .pricing-body { padding: 2rem 2.5rem; }
+  .pricing-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--black);
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .pricing-item:last-of-type { border-bottom: none; }
+  .check {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: rgba(201,169,110,0.15);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .check::after {
+    content: '';
+    width: 5px; height: 8px;
+    border-right: 1.5px solid var(--gold);
+    border-bottom: 1.5px solid var(--gold);
+    transform: rotate(45deg) translate(-1px,-1px);
+  }
+  .addon-label {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 1.5rem 0 0.75rem;
+  }
+  .addon {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: var(--muted);
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .addon:last-child { border-bottom: none; }
+  .addon-price { font-weight: 500; color: var(--black); }
+
+  /* CTA FOOTER */
+  .cta-section {
+    background: var(--black);
+    text-align: center;
+    padding: 6rem 2rem;
+  }
+  .cta-section h2 {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 4vw, 44px);
+    color: var(--white);
+    font-weight: 400;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+  .cta-section h2 em { font-style: italic; color: var(--gold); }
+  .cta-section p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.45);
+    max-width: 420px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+  .cta-foot-note {
+    font-size: 12px;
+    color: rgba(255,255,255,0.2);
+    margin-top: 1rem;
+    letter-spacing: 0.04em;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #050505;
+    color: rgba(255,255,255,0.2);
+    text-align: center;
+    font-size: 12px;
+    padding: 1.5rem;
+    letter-spacing: 0.04em;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .proof-bar { gap: 1.5rem; }
+    .pricing-header { flex-direction: column; gap: 1rem; align-items: flex-start; }
+    nav { padding: 0 1rem; }
+    section { padding: 3.5rem 1.25rem; }
+    .hero { padding: 4rem 1.25rem 3.5rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .btn-primary:hover { transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Sash Nejad</a>
+  <a href="https://calendly.com/sash-nejad/15-minute-meeting-clone" class="nav-cta" target="_blank" rel="noopener">Book free call</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-eyebrow">Montreal · Online Coaching</div>
+  <h1>Transform your body<br>with a plan built <em>only for you</em></h1>
+  <p class="hero-sub">Stop guessing at the gym. A personalized coaching system built around your goals, your schedule, and your life.</p>
+  <a href="https://calendly.com/sash-nejad/15-minute-meeting-clone" class="btn-primary" target="_blank" rel="noopener">Book your free 15-min assessment</a>
+  <p class="btn-note">Free · No commitment · Limited spots each month</p>
+  <div class="proof-bar">
+    <div class="proof-item">
+      <div class="proof-num">50+</div>
+      <div class="proof-label">Clients transformed</div>
+    </div>
+    <div class="proof-item">
+      <div class="proof-num">15 min</div>
+      <div class="proof-label">Free consultation</div>
+    </div>
+    <div class="proof-item">
+      <div class="proof-num">24/7</div>
+      <div class="proof-label">WhatsApp support</div>
+    </div>
+  </div>
+</section>
+
+<section class="who">
+  <div class="container">
+    <p class="section-eyebrow">Who this is for</p>
+    <h2 class="section-title">Built for people who are serious about real results</h2>
+    <div class="who-grid">
+      <div class="who-card"><div class="who-dot"></div><span>Wanting to lose fat</span></div>
+      <div class="who-card"><div class="who-dot"></div><span>Focused on toning & weight loss</span></div>
+      <div class="who-card"><div class="who-dot"></div><span>Building muscle & strength</span></div>
+      <div class="who-card"><div class="who-dot"></div><span>General fitness & energy</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <p class="section-eyebrow">What you get</p>
+    <h2 class="section-title">Everything you need. Nothing you don't.</h2>
+    <div class="features-grid">
+      <div class="feature">
+        <div class="feature-num">01</div>
+        <div class="feature-title">Personalized workout program</div>
+        <div class="feature-desc">A plan designed around your body, goals, equipment, and weekly availability.</div>
+      </div>
+      <div class="feature">
+        <div class="feature-num">02</div>
+        <div class="feature-title">One in-person session</div>
+        <div class="feature-desc">Hands-on coaching to lock in your form, technique, and confidence from day one.</div>
+      </div>
+      <div class="feature">
+        <div class="feature-num">03</div>
+        <div class="feature-title">Weekly check-ins</div>
+        <div class="feature-desc">Accountability built into the plan so you never lose momentum between sessions.</div>
+      </div>
+      <div class="feature">
+        <div class="feature-num">04</div>
+        <div class="feature-title">24/7 WhatsApp support</div>
+        <div class="feature-desc">Message Sash anytime — questions, adjustments, or just a push when you need it.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how">
+  <div class="container">
+    <p class="section-eyebrow">How it works</p>
+    <h2 class="section-title">From assessment to results in 3 steps</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <div class="step-title">Fill the free assessment</div>
+          <div class="step-desc">5 quick questions about your goals, current fitness, and what's been holding you back. Takes 2 minutes.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <div class="step-title">Join your free 15-min call</div>
+          <div class="step-desc">Sash reviews your answers before the call and walks you through a personalized game plan. No pitch. No pressure.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <div class="step-title">Start your transformation</div>
+          <div class="step-desc">If it's a fit, your custom program is ready within 48 hours and your journey begins.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <p class="section-eyebrow">Investment</p>
+    <h2 class="section-title">One package. Everything included.</h2>
+    <div class="pricing-card">
+      <div class="pricing-header">
+        <div>
+          <div class="pricing-name">Online Coaching Package</div>
+          <div class="pricing-sub">Personalized · Accountable · Results-driven</div>
+        </div>
+        <div>
+          <div class="pricing-amount">$390</div>
+          <div class="pricing-period">/month</div>
+        </div>
+      </div>
+      <div class="pricing-body">
+        <div class="pricing-item"><div class="check"></div>One in-person session</div>
+        <div class="pricing-item"><div class="check"></div>Personalized workout program</div>
+        <div class="pricing-item"><div class="check"></div>Weekly accountability check-ins</div>
+        <div class="pricing-item"><div class="check"></div>24/7 WhatsApp support</div>
+        <div class="addon-label">Optional add-ons</div>
+        <div class="addon"><span>Custom meal plan</span><span class="addon-price">+$80</span></div>
+        <div class="addon"><span>Extra personal training session</span><span class="addon-price">+$105</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2>Ready to stop guessing<br>and start <em>seeing results?</em></h2>
+    <p>Book your free 15-minute assessment call. Sash reviews your goals personally and tells you exactly what will work for you.</p>
+    <a href="https://calendly.com/sash-nejad/15-minute-meeting-clone" class="btn-primary" target="_blank" rel="noopener">Claim your free call</a>
+    <p class="cta-foot-note">Limited spots available each month · Montreal-based · Online worldwide</p>
+  </div>
+</section>
+
+<footer>
+  &copy; 2026 Sash Nejad Coaching · Montreal, QC
+</footer>
+
+</body>
+</html>
